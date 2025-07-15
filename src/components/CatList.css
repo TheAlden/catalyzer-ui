@@ -1,0 +1,88 @@
+.catlist-container {
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.catlist-heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.catlist-table-wrapper {
+  border: 0px solid #ccc;
+  border-radius: 0px;
+  overflow-x: auto;
+}
+
+.catlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.cat-header-row {
+  background-color: orange;
+  border-bottom: 8px solid #ff7b00;
+}
+
+.cat-header-cell {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.cat-row {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.cat-row:hover {
+  background-color: #28284e;
+}
+
+.cat-cell {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.cat-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.cat-button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.cat-button.edit:hover {
+  background-color: orange;
+}
+
+.cat-button.delete {
+  color: #b00020;
+}
+
+.cat-button.delete:hover {
+  background-color: #fc3434;
+}
+
+.cat-color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid #aaa;
+  display: inline-block;
+}
