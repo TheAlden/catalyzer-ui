@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCats, removeCat } from "../services/cats.service";
-import "./CatList.css";
+import "../css/CatList.css";
 import { colorOptions } from '../assets/colorOptions';
 
 const Cat = (props) => (

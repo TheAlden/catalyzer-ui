@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+import "../css/Navbar.css";
 import logo from '../assets/logo.png';
 
 export default function Navbar() {
@@ -20,7 +20,7 @@ export default function Navbar() {
             Create Cat
           </NavLink>
           <NavLink to="/cats" className="navbar-link">
-            Cat List
+            Your Cats
           </NavLink>
         </div>
         

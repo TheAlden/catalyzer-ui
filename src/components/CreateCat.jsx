@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { addCat, updateCat, getCat } from "../services/cats.service";
-import './CreateCat.css';
+import '../css/CreateCat.css';
 import { colorOptions } from '../assets/colorOptions';
 
 export default function CreateCat() {

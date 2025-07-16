@@ -4,7 +4,7 @@ import { getCat } from "../services/cats.service";
 import { colorOptions } from "../assets/colorOptions";
 import outline from '../assets/catOutline.png';
 import features from '../assets/catFeatures.png';
-import './PetCat.css';
+import '../css/PetCat.css';
 
 export default function ViewCat() {
   const [form, setForm] = useState({
