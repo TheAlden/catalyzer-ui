@@ -1,0 +1,14 @@
+.page-heading {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  background-color: orange;
+  border-bottom: 8px solid #ff7b00;
+}
+
+.page-container {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 20px;
+  font-family: Arial, sans-serif;
+}

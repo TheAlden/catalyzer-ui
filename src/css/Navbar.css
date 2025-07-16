@@ -6,17 +6,24 @@
 
 .navbar-content {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  gap: 80px;
 }
 
 .navbar-logo {
   height: 40px;
   width: auto;
   object-fit: contain;
-  transform: scale(1.6);
+  transform: scale(1.5);
   transform-origin: left center;
+  margin-right: 40px;
+}
+
+.navbar-left-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .navbar-links {
@@ -24,7 +31,13 @@
   gap: 20px;
 }
 
+.navbar-links-right {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-link {
+  all: unset;
   color: white;
   text-decoration: none;
   font-weight: 500;

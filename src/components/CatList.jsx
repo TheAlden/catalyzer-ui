@@ -3,39 +3,46 @@ import { Link } from "react-router-dom";
 import { getCats, removeCat } from "../services/cats.service";
 import "../css/CatList.css";
 import { colorOptions } from '../assets/colorOptions';
+import outline from '../assets/catOutline.png';
+import features from '../assets/catFeatures.png';
 
-const Cat = (props) => (
-  <tr className="cat-row">
-    <td className="cat-cell">{props.record.name}</td>
-    <td className="cat-cell">{props.record.age}</td>
-    <td className="cat-cell">
-      <div
-        className="cat-color-swatch"
-        style={{ backgroundColor: colorOptions[props.record.color] || '#ccc' }}
-        title={props.record.color}
-      />
-    </td>
-    <td className="cat-cell">
-      <div className="cat-actions">
-        <Link className="cat-button edit" to={`/edit/${props.record._id}`}>
-          Edit
+import editIcon from '../assets/edit.png';
+import viewIcon from '../assets/view.png';
+import deleteIcon from '../assets/delete.png';
+
+const Cat = ({ record, deleteRecord }) => {
+  const tintColor = colorOptions[record.color] || '#ccc';
+
+  return (
+    <div className="cat-card">
+      <h4 className="cat-name">{record.name}</h4>
+      <p className="cat-age">Age: {record.age}</p>
+      <div className="cat-image-stack">
+        <img src={outline} alt="Cat Outline" className="cat-image outline" />
+        <div
+          className="cat-image-tint"
+          style={{ backgroundColor: tintColor }}
+        />
+        <img src={features} alt="Cat Features" className="cat-image features" />
+      </div>
+
+      <div className="cat-card-actions">
+        <Link className="cat-button edit" to={`/edit/${record._id}`}>
+          <img src={editIcon} alt="Edit" className="cat-icon" />
         </Link>
-        <Link className="cat-button edit" to={`/pet/${props.record._id}`}>
-          View
+        <Link className="cat-button view" to={`/pet/${record._id}`}>
+          <img src={viewIcon} alt="View" className="cat-icon" />
         </Link>
         <button
           className="cat-button delete"
-          type="button"
-          onClick={() => {
-            props.deleteRecord(props.record._id);
-          }}
+          onClick={() => deleteRecord(record._id)}
         >
-          Delete
+          <img src={deleteIcon} alt="Delete" className="cat-icon" />
         </button>
       </div>
-    </td>
-  </tr>
-);
+    </div>
+  );
+};
 
 export default function CatList() {
   const [cats, setCats] = useState([]);
@@ -65,34 +72,17 @@ export default function CatList() {
     }
   }
 
-  // This method will map out the cats into table rows
-  function catList() {
-    return cats.map((cat) => (
-      <Cat
-        record={cat}
-        deleteRecord={() => handleDelete(cat._id)}
-        key={cat._id}
-      />
-    ));
-  }
-
   return (
-    <div className="catlist-container">
-      <h3 className="catlist-heading">Cats</h3>
-      <div className="catlist-table-wrapper">
-        <table className="catlist-table">
-          <thead>
-            <tr className="cat-header-row">
-              <th className="cat-header-cell">Name</th>
-              <th className="cat-header-cell">Age</th>
-              <th className="cat-header-cell">Color</th>
-              <th className="cat-header-cell">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {catList()}
-          </tbody>
-        </table>
+    <div className="page-container">
+      <h3 className="page-heading">Your Cats:</h3>
+      <div className="catlist-grid">
+        {cats.map((cat) => (
+          <Cat
+            key={cat._id}
+            record={cat}
+            deleteRecord={handleDelete}
+          />
+        ))}
       </div>
     </div>
   );

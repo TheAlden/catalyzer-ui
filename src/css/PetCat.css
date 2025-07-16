@@ -9,17 +9,17 @@
 }
 
 .cat-name {
-  font-size: 3rem;
-  margin-bottom: -1.1rem;
+  font-size: 30px;
+  margin-bottom: -20px;
   color: white;
 }
 
 .cat-image-stack {
   position: relative;
-  height: 60vh;
-  width: 60vh;
-  margin: -3vh auto;
+  height: 25vh;
+  width: 25vh;
   animation: fadeIn 0.6s ease-in-out;
+  margin: auto;
 }
 
 .cat-image-stack img,
@@ -61,7 +61,7 @@
 }
 
 .cat-age {
-  font-size: 1.5rem;
+  font-size: 20px;
   color: #ffffff;
 }
 

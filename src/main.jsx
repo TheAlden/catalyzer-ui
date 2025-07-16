@@ -9,6 +9,7 @@ import CreateCat from "./components/CreateCat";
 import CatList from "./components/CatList";
 import Home from "./components/Home";
 import PetCat from "./components/PetCat";
+import Login from "./components/Login"
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -39,6 +40,16 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <CreateCat />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <App />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

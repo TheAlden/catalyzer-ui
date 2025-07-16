@@ -2,6 +2,7 @@ const backend = 'http://localhost:3000/graphql';
 
 // Get All Cats
 export async function getCats() {
+  const token = localStorage.getItem("access_token");
   const query = `
     query {
       cats {
@@ -15,7 +16,10 @@ export async function getCats() {
 
   const response = await fetch(backend, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({ query }),
   });
 
@@ -30,6 +34,7 @@ export async function getCats() {
 
 // Get a Specific Cat by ID
 export async function getCat(catId) {
+  const token = localStorage.getItem("access_token");
   const query = `
     query GetCat($id: String!) {
       cat(id: $id) {
@@ -45,7 +50,10 @@ export async function getCat(catId) {
 
   const response = await fetch(backend, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({ query, variables }),
   });
 
@@ -60,6 +68,7 @@ export async function getCat(catId) {
 
 // Add a Cat
 export async function addCat(catInput) {
+  const token = localStorage.getItem("access_token");
   const mutation = `
     mutation CreateCat($createCatDto: CreateCatDto!) {
       createCat(createCatDto: $createCatDto) {
@@ -81,7 +90,10 @@ export async function addCat(catInput) {
 
   const response = await fetch(backend, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({ query: mutation, variables }),
   });
 
@@ -96,6 +108,7 @@ export async function addCat(catInput) {
 
 // Remove a Cat by ID
 export async function removeCat(catId) {
+  const token = localStorage.getItem("access_token");
   const mutation = `
     mutation DeleteCat($id: String!) {
       deleteCat(id: $id) {
@@ -111,7 +124,10 @@ export async function removeCat(catId) {
 
   const response = await fetch(backend, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({ query: mutation, variables }),
   });
 
@@ -126,6 +142,7 @@ export async function removeCat(catId) {
 
 // Update a Cat by ID
 export async function updateCat(id, catInput) {
+  const token = localStorage.getItem("access_token");
   const mutation = `
     mutation UpdateCat($id: String!, $updateCatDto: UpdateCatDto!) {
       updateCat(id: $id, updateCatDto: $updateCatDto) {
@@ -148,7 +165,10 @@ export async function updateCat(id, catInput) {
 
   const response = await fetch(backend, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({ query: mutation, variables }),
   });
 

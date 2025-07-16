@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { addCat, updateCat, getCat } from "../services/cats.service";
 import '../css/CreateCat.css';
+import '../css/main.css'
 import { colorOptions } from '../assets/colorOptions';
 
 export default function CreateCat() {
@@ -58,8 +59,8 @@ export default function CreateCat() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <>
-      <h3 className="create-heading">Create a Cat:</h3>
+    <div className="page-container">
+      <h3 className="page-heading">Create a Cat:</h3>
       <form onSubmit={onSubmit} className="create-form">
         <div className="form-section">
           <div>
@@ -116,6 +117,6 @@ export default function CreateCat() {
         </div>
         <input type="submit" value="Save Cat" className="submit-button" />
       </form>
-    </>
+    </div>
   );
 }
