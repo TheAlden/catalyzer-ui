@@ -1,33 +1,27 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../css/Login.css";
+import { signUp, login } from '../services/users.service'
 
 export default function Login() {
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useOutletContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Invalid username or password");
-      }
-
-      const data = await response.json();
-      localStorage.setItem("access_token", data.access_token);
-      navigate("/");
+        const token = await login(username, password);
+        localStorage.setItem("access_token", token);
+        setIsLoggedIn(true);
+        navigate("/cats");
+        window.location.reload();
     } catch (err) {
-      setError(err.message);
+        alert(err.message);
     }
   };
 

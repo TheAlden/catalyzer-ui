@@ -43,13 +43,18 @@ export default function Navbar() {
 
         <div className="navbar-links-right">
           {isLoggedIn ? (
-            <button className="navbar-link" onClick={handleLogout}>
+            <button onClick={handleLogout} className="navbar-link">
               Logout
             </button>
           ) : (
-            <NavLink to="/login" className="navbar-link">
-              Login
-            </NavLink>
+            <>
+              <NavLink to="/login" className="navbar-link">
+                Login
+              </NavLink>
+              <NavLink to="/signup" className="navbar-link">
+                Sign Up
+              </NavLink>
+            </>
           )}
         </div>
       </nav>

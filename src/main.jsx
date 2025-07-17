@@ -10,6 +10,7 @@ import CatList from "./components/CatList";
 import Home from "./components/Home";
 import PetCat from "./components/PetCat";
 import Login from "./components/Login"
+import Signup from "./components/Signup"
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -50,6 +51,16 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/signup",
+    element: <App />,
+    children: [
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },

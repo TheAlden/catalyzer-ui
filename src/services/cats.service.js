@@ -1,4 +1,4 @@
-const backend = 'http://localhost:3000/graphql';
+const GRAPHQL_ENDPOINT = 'http://localhost:3000/graphql';
 
 // Get All Cats
 export async function getCats() {
@@ -14,7 +14,7 @@ export async function getCats() {
     }
   `;
 
-  const response = await fetch(backend, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export async function getCat(catId) {
 
   const variables = { id: catId };
 
-  const response = await fetch(backend, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export async function addCat(catInput) {
     },
   };
 
-  const response = await fetch(backend, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ export async function removeCat(catId) {
 
   const variables = { id: catId };
 
-  const response = await fetch(backend, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ export async function updateCat(id, catInput) {
     },
   };
 
-  const response = await fetch(backend, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

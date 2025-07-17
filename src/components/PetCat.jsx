@@ -54,9 +54,13 @@ export default function ViewCat() {
     setSuccess(null);
 
     try {
+      const token = localStorage.getItem("access_token");
       const response = await fetch('http://localhost:3000/mail/send', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify({
           to: email,
           subject: `Here's your cat: ${form.name}`,
