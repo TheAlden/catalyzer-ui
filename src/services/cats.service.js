@@ -1,4 +1,6 @@
-const GRAPHQL_ENDPOINT = 'http://localhost:3000/graphql';
+const baseURL = import.meta.env.VITE_BASE_URL
+console.log('Base URL:', baseURL);
+const GRAPHQL_ENDPOINT = baseURL + '/graphql';
 
 // Get All Cats
 export async function getCats() {
@@ -30,6 +32,38 @@ export async function getCats() {
   }
 
   return result.data.cats;
+}
+
+// Get a User's Cats
+export async function getUsersCats() {
+  const token = localStorage.getItem("access_token");
+  const query = `
+    query {
+      usersCats {
+        _id
+        name
+        age
+        color
+      }
+    }
+  `;
+
+  const response = await fetch(GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  const result = await response.json();
+
+  if (result.errors) {
+    throw new Error(result.errors.map(e => e.message).join(', '));
+  }
+
+  return result.data.usersCats;
 }
 
 // Get a Specific Cat by ID
@@ -180,4 +214,3 @@ export async function updateCat(id, catInput) {
 
   return result.data.updateCat;
 }
-

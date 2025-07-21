@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCats, removeCat } from "../services/cats.service";
+import { getCats, getUsersCats, removeCat } from "../services/cats.service";
 import "../css/CatList.css";
 import { colorOptions } from '../assets/colorOptions';
 import outline from '../assets/catOutline.png';
@@ -51,7 +51,7 @@ export default function CatList() {
   useEffect(() => {
     async function fetchCats() {
       try {
-        const data = await getCats();
+        const data = await getUsersCats(); // CHANGE THIS TO SEE ALL CATS
         setCats(data); // store in state
       } catch (error) {
         console.error("Failed to load cats:", error);
@@ -68,7 +68,7 @@ export default function CatList() {
       setCats(prev => prev.filter(cat => cat._id !== catId));
     } catch (error) {
       console.error('Failed to delete cat:', error);
-      alert('An error occurred while deleting the cat.');
+      alert('An error occurred while deleting the cat');
     }
   }
 

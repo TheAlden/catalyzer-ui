@@ -1,5 +1,6 @@
-const GRAPHQL_ENDPOINT = "http://localhost:3000/graphql";
-const LOGIN_ENDPOINT = "http://localhost:3000/auth/login";
+const baseURL = import.meta.env.VITE_BASE_URL
+const GRAPHQL_ENDPOINT = baseURL + '/graphql';
+const LOGIN_ENDPOINT = baseURL + '/auth/login';
 
 export async function signUp(username, password) {
   const createUserMutation = `
@@ -38,8 +39,8 @@ export async function login(username, password) {
 
   const result = await response.json();
 
-  if (!result.access_token) {
-    throw new Error("Login failed");
+  if (!response.ok) {
+    throw new Error(result.message || "Login failed");
   }
 
   return result.access_token;
